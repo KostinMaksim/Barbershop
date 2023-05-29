@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  app:
+    # your custom container name
+    container_name: barbershop-app
+    # your custom image name
+    image: barbershop-app
+    # create image by Docker file
+    build: ./
+    # container port : server port
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    container_name: db
+    # image name and version (default version: latest)
+    image: 'postgres:13.1-alpine'
+    # default user, db
+    environment:
+      - POSTGRES_PASSWORD=Maksim123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=barbershop
